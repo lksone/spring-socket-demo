@@ -11,8 +11,22 @@ import java.nio.ByteBuffer;
 public class ByteBufferApp {
 
     public static void main(String[] args) {
+        testByteBuffer();
+    }
+
+
+    /**
+     * 测试使用ByteBuffer的缓存区
+     */
+    private static void testByteBuffer() {
         // 初始化一个大小为6的ByteBuffer
+
+        //直接使用的
         ByteBuffer buffer = ByteBuffer.allocate(6);
+
+        //直接使用对外内存，直接存入磁盘映射的方式
+        ByteBuffer buffer1 = ByteBuffer.allocateDirect(1024);
+
         // 初始状态：position: 0, limit: 6, capacity: 6
         print(buffer);
 
@@ -34,7 +48,6 @@ public class ByteBufferApp {
         print(buffer);
         buffer.flip();
         print(buffer);
-
     }
 
     private static void print(ByteBuffer buffer) {
